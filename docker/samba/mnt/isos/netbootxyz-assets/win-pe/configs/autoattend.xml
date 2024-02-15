@@ -1,0 +1,138 @@
+<!-- Filename: ~/github/containerdata-public/docker/samba/mnt/isos/netbootxyz-assets/win-pe/configs/autoattend.xml -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+   <settings pass="windowsPE">
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <SetupUILanguage>
+            <UILanguage>en-US</UILanguage>
+         </SetupUILanguage>
+         <InputLocale>0409:00000409</InputLocale>
+         <SystemLocale>en-US</SystemLocale>
+         <UILanguage>en-US</UILanguage>
+         <UILanguageFallback>en-US</UILanguageFallback>
+         <UserLocale>en-US</UserLocale>
+      </component>
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <ImageInstall>
+            <OSImage>
+              <!-- <InstallFrom> -->
+              <!--     <MetaData wcm:action="add"> -->
+              <!--         <Key>/IMAGE/NAME</Key> -->
+              <!--         <Value>Windows 11 Pro</Value> -->
+              <!--     </MetaData> -->
+              <!-- </InstallFrom> -->
+               <!-- <InstallTo> -->
+               <!-- <DiskID>0</DiskID> -->
+               <!-- <PartitionID>5</PartitionID> -->
+               <!-- </InstallTo> -->
+               <!-- <InstallToAvailablePartition>false</InstallToAvailablePartition> -->
+            </OSImage>
+         </ImageInstall>
+         <UserData>
+            <ProductKey>
+               <!-- The below one is a generic key for Windows 11 Pro  -->
+               <!-- This key WILL NOT ACTIVATE Windows, it will just allow you to install it, more info on the website below -->
+               <!-- https://www.elevenforum.com/t/generic-product-keys-to-install-or-upgrade-windows-11-editions.3713/ -->
+               <Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
+               <!-- Do not uncomment the Key element if you are using trial ISOs -->
+               <!-- You must uncomment the Key element (and optionally insert your own key) if you are using retail or volume license ISOs -->
+               <WillShowUI>Never</WillShowUI>
+            </ProductKey>
+            <AcceptEula>true</AcceptEula>
+            <FullName>linkarzu</FullName>
+            <Organization>Linkarzu-org</Organization>
+         </UserData>
+      </component>
+   </settings>
+   <settings pass="offlineServicing">
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-LUA-Settings" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <EnableLUA>false</EnableLUA>
+      </component>
+   </settings>
+   <settings pass="generalize">
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Security-SPP" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <SkipRearm>1</SkipRearm>
+      </component>
+   </settings>
+   <settings pass="specialize">
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <InputLocale>0409:00000409</InputLocale>
+         <SystemLocale>en-US</SystemLocale>
+         <UILanguage>en-US</UILanguage>
+         <UILanguageFallback>en-US</UILanguageFallback>
+         <UserLocale>en-US</UserLocale>
+      </component>
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Security-SPP-UX" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <SkipAutoActivation>true</SkipAutoActivation>
+      </component>
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-SQMApi" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <CEIPEnabled>0</CEIPEnabled>
+      </component>
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <ComputerName>LINKARZU-PC</ComputerName>
+         <!-- <ProductKey>W269N-WFGWX-YVC9B-4J6C9-T83GX</ProductKey> -->
+      </component>
+   </settings>
+   <settings pass="oobeSystem">
+      <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+         <AutoLogon>
+            <Password>
+               <Value />
+               <PlainText>true</PlainText>
+            </Password>
+            <Enabled>true</Enabled>
+            <Username>linkarzu</Username>
+         </AutoLogon>
+         <OOBE>
+            <HideEULAPage>true</HideEULAPage>
+            <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+            <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+            <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+            <NetworkLocation>Home</NetworkLocation>
+            <SkipUserOOBE>true</SkipUserOOBE>
+            <SkipMachineOOBE>true</SkipMachineOOBE>
+            <ProtectYourPC>1</ProtectYourPC>
+         </OOBE>
+         <UserAccounts>
+            <LocalAccounts>
+               <LocalAccount wcm:action="add">
+                  <Password>
+                     <Value />
+                     <PlainText>true</PlainText>
+                  </Password>
+                  <Description>admin</Description>
+                  <DisplayName>linkarzu</DisplayName>
+                  <Group>Administrators</Group>
+                  <Name>linkarzu</Name>
+               </LocalAccount>
+            </LocalAccounts>
+         </UserAccounts>
+         <RegisteredOrganization>Linkarzu-org</RegisteredOrganization>
+         <RegisteredOwner>linkarzu</RegisteredOwner>
+         <DisableAutoDaylightTimeSet>true</DisableAutoDaylightTimeSet>
+         <FirstLogonCommands>
+            <SynchronousCommand wcm:action="add">
+               <Description>Control Panel View</Description>
+               <Order>1</Order>
+               <CommandLine>reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel" /v StartupPage /t REG_DWORD /d 1 /f</CommandLine>
+               <RequiresUserInput>true</RequiresUserInput>
+            </SynchronousCommand>
+            <SynchronousCommand wcm:action="add">
+               <Order>2</Order>
+               <Description>Control Panel Icon Size</Description>
+               <RequiresUserInput>false</RequiresUserInput>
+               <CommandLine>reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel" /v AllItemsIconView /t REG_DWORD /d 0 /f</CommandLine>
+            </SynchronousCommand>
+            <SynchronousCommand wcm:action="add">
+               <Order>3</Order>
+               <RequiresUserInput>false</RequiresUserInput>
+               <CommandLine>cmd /C wmic useraccount where name="linkarzu" set PasswordExpires=false</CommandLine>
+               <Description>Password Never Expires</Description>
+            </SynchronousCommand>
+         </FirstLogonCommands>
+         <TimeZone>Central America Standard Time</TimeZone>
+      </component>
+   </settings>
+</unattend>
+

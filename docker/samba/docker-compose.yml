@@ -1,0 +1,43 @@
+#Filename: ~/github/containerdata-public/docker/samba/docker-compose.yml
+
+#docker compose -f ~/github/containerdata-public/docker/samba/docker-compose.yml up -d
+
+version: "3.8"
+services:
+  samba:
+    container_name: samba
+    restart: unless-stopped
+    network_mode: host
+
+    #https://hub.docker.com/r/servercontainers/samba/tags
+    image: ghcr.io/servercontainers/samba:a3.19.0-s4.18.9-r0
+
+    environment:
+      MODEL: "TimeCapsule"
+      AVAHI_NAME: SambaServer
+      SAMBA_CONF_LOG_LEVEL: 3
+      #uncomment to disable optional services
+      #WSDD2_DISABLE: 1
+      #AVAHI_DISABLE: 1
+
+      #To generate a hashed password run the command below, just use the correct image tag
+      #I set the password to 'PasswordIsos' but you can change that with the command below
+      #You will be asked for the username and password
+      #docker run -ti --rm --entrypoint create-hash.sh ghcr.io/servercontainers/samba:a3.19.0-s4.18.9-r0
+      ACCOUNT_isos: "isos:1000:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:5957C22853144D5C5E61436F30A684CA:[U          ]:LCT-65CA2792:"
+
+      #This sets the uid for the user
+      UID_isos: 8225
+
+      #Creates the group named "deez" with gid 8598
+      GROUP_deez: 8598
+
+      #makes users members of the "deez" group, use ',' to separate multiple groups
+      GROUPS_isos: deez
+
+      #creates a samba volume, your computer will show "isos", the path is configured under "volumes" below
+      SAMBA_VOLUME_CONFIG_isos: "[isos]; path=/mnt/isos; valid users = isos; guest ok = no; read only = no; browseable = yes"
+
+    volumes:
+      #the right side is what you'll use in "path" when creating the samba volume above
+      - ./mnt/isos:/mnt/isos

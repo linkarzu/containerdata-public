@@ -1,0 +1,41 @@
+#Filename: ~/github/containerdata-public/docker/netbootxyz/docker-compose.yml
+
+#docker compose -f ~/github/containerdata-public/docker/netbootxyz/docker-compose.yml up -d
+
+version: "3.8"
+services:
+  netbootxyz:
+    container_name: netbootxyz
+    restart: unless-stopped
+
+    #https://hub.docker.com/r/linuxserver/netbootxyz/tags
+    #I always statically declare the tag, if you don't specify it, it will
+    #use latest, and if 'latest' gets and update that breaks your config your
+    #container will probably not start
+    #tag in this case is 0.7.1 which is the lastest at the moment
+    image: linuxserver/netbootxyz:0.7.1
+
+    #sudo lsof -P -i:3000,69,8083
+    ports:
+      #Web interface
+      - 3029:3000
+      #TFTP server so that PXE clients can download boot files
+      - 69:69/udp
+      #NGINX server for hosting assets like OS images
+      - 8083:80
+
+    environment:
+      - PUID=1000
+      - PGID=1000
+      #https://github.com/netbootxyz/netboot.xyz/releases
+      - MENU_VERSION=2.0.76 #optional
+      #Specify the port range tftp will use for data transfers
+      - PORT_RANGE=30000:30010 #optional
+      - SUBFOLDER=/ #optional
+      - TZ=America/Guatemala
+
+    volumes:
+      # I'm mounting the assets directory in the samba container so that the
+      # files there can be accessed via samba, and edited from Windows if needed
+      - ../samba/mnt/isos/netbootxyz-assets:/assets
+      - ./config:/config
