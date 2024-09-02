@@ -3,3 +3,5 @@ data/
 config/
 docker/samba/mnt/isos/netbootxyz-assets/win-pe/x64
 docker/samba/mnt/isos/windows/win-os/win11
+*.DS_Store
+*server exited unexpectedly
